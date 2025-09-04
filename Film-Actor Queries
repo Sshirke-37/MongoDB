@@ -1,0 +1,275 @@
+Q.1 
+Movie> db.Film.find({title:/^T/})
+[
+  {
+    _id: ObjectId('68b91308ae83b9bf19eec4ac'),
+    film_id: 'f004',
+    title: 'Titanic',
+    year: 1997,
+    genre: [ 'drama', 'romance' ],
+    actors: [ { fname: 'Kate', lname: 'Winslet' } ],
+    director: { fname: 'James', lname: 'Cameron' },
+    release_details: [
+      {
+        place: 'India',
+        date: ISODate('1998-01-23T00:00:00.000Z'),
+        rating: 8.2
+      }
+    ]
+  }
+]
+
+
+db.Film.updateMany({ title: /^T/ },
+...   { $inc: { "release_details.$[].rating": 0.5 } }
+... )
+
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+Movie> db.Film.find({title:/^T/})
+[
+  {
+    _id: ObjectId('68b91308ae83b9bf19eec4ac'),
+    film_id: 'f004',
+    title: 'Titanic',
+    year: 1997,
+    genre: [ 'drama', 'romance' ],
+    actors: [ { fname: 'Kate', lname: 'Winslet' } ],
+    director: { fname: 'James', lname: 'Cameron' },
+    release_details: [
+      {
+        place: 'India',
+        date: ISODate('1998-01-23T00:00:00.000Z'),
+        rating: 8.7
+      }
+    ]
+  }
+]
+
+
+Q.2
+Movie> db.Film.updateMany({title:/a$/},{$inc:{"release_details.$[].rating":1.0}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Movie> db.Film.find({title:/a$/})
+[
+  {
+    _id: ObjectId('68b91313ae83b9bf19eec4ae'),
+    film_id: 'f006',
+    title: 'Maya',
+    year: 2022,
+    genre: [ 'thriller', 'mystery' ],
+    actors: [ { fname: 'Amit', lname: 'Sadh' } ],
+    director: { fname: 'Ashwin', lname: 'Saravanan' },
+    release_details: [
+      {
+        place: 'India',
+        date: ISODate('2022-08-10T00:00:00.000Z'),
+        rating: 8.2
+      }
+    ]
+  }
+]
+
+
+Q.3
+
+ db.Actor.insertOne({actor_id:2,fname:"Dhanush",lname:"",
+	address:{street:"Kodambakkam",city:"Chennai",state:"TN",country:"India",pincode:"600024"},
+		contact:{email:"dhanush@film.com",phone:"+91-7058092375"},age:41})
+
+  {
+    _id: ObjectId('68b912faae83b9bf19eec4aa'),
+    film_id: 'f002',
+    title: 'Asuran',
+    year: 2019,
+    genre: [ 'action', 'drama' ],
+    actors: [ { fname: 'Dhanush', lname: '' } ],
+    director: { fname: 'Vetrimaaran', lname: '' },
+    release_details: [
+      {
+        place: 'USA',
+        date: ISODate('2010-07-16T00:00:00.000Z'),
+        rating: 8.8
+      },
+      {
+        place: 'UK',
+        date: ISODate('2010-07-22T00:00:00.000Z'),
+        rating: 8.7
+      }
+    ]
+  }
+
+
+Q.4
+Movie> db.Film.find({title:/^E/})
+[
+  {
+    _id: ObjectId('68b91319ae83b9bf19eec4af'),
+    film_id: 'f007',
+    title: 'Endgame',
+    year: 2019,
+    genre: [ 'action', 'superhero' ],
+    actors: [ { fname: 'Robert', lname: 'Downey Jr.' } ],
+    director: { fname: 'Anthony', lname: 'Russo' },
+    release_details: [
+      {
+        place: 'India',
+        date: ISODate('2019-04-26T00:00:00.000Z'),
+        rating: 8.6
+      }
+    ]
+  }
+]
+
+Movie> db.Film.deleteOne({title:"Endgame"})
+{ acknowledged: true, deletedCount: 1 }
+
+
+Q.5
+Movie> db.Actor.find({fname:"Salman"})
+[
+  {
+    _id: ObjectId('68b91394ae83b9bf19eec4b5'),
+    actor_id: 4,
+    fname: 'Salman',
+    lname: 'Khan',
+    address: {
+      street: 'Galaxy Apt',
+      city: 'Mumbai',
+      state: 'MH',
+      country: 'India',
+      pincode: '400026'
+    },
+    contact: { email: 'sallu@film.com', phone: '+91-7058093171' },
+    age: 59
+  }
+]
+Movie>
+
+Movie>
+
+Movie>
+
+Movie> db.Actor.deleteOne({fname:"Salman"})
+{ acknowledged: true, deletedCount: 1 }
+
+
+Q.6
+TO do
+
+
+Q.7
+  {
+    _id: ObjectId('68b91399ae83b9bf19eec4b6'),
+    actor_id: 5,
+    fname: 'Amitabh',
+    lname: 'Bachaan',
+    address: {
+      street: 'Prateeksha',
+      city: 'Mumbai',
+      state: 'MH',
+      country: 'India',
+      pincode: '400052'
+    },
+    contact: { email: 'amitabachhan@film.com', phone: '+91-7777777777' },
+    age: 75
+  }
+
+Movie> db.Actor.updateOne(
+... {actor_id:5},
+... {
+... $set:{
+... address:{
+... street:"Baner Road",
+... city:"Pune",
+... state:"MH",
+... country:"India",
+... pincode:"411045"
+... }
+... }
+... }
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+Movie> db.Actor.find({"actor_id":5})
+[
+  {
+    _id: ObjectId('68b91399ae83b9bf19eec4b6'),
+    actor_id: 5,
+    fname: 'Amitabh',
+    lname: 'Bachaan',
+    address: {
+      street: 'Baner Road',
+      city: 'Pune',
+      state: 'MH',
+      country: 'India',
+      pincode: '411045'
+    },
+    contact: { email: 'amitabachhan@film.com', phone: '+91-7777777777' },
+    age: 75
+  }
+]
+
+
+Q.8
+Movie> db.Film.updateOne({'director.fname':"Christopher",'director.lname':"Nolan"},{$set:{genre:['psycological thriller']}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Movie> db.Film.updateOne({'director.fname':"Christopher",'director.lname':"Nolan"},{$push:{genre:['action']}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Movie> db.Film.find({film_id:"f001"})
+[
+  {
+    _id: ObjectId('68b912f3ae83b9bf19eec4a9'),
+    film_id: 'f001',
+    title: 'Inception',
+    year: 2010,
+    genre: [ 'psycological thriller', [ 'action' ] ],
+    actors: [
+      { fname: 'Leonard', lname: 'DiCaprico' },
+      { fname: 'Joseph', lname: 'Gordon-Levitt' }
+    ],
+    director: { fname: 'Christopher', lname: 'Nolan' },
+    release_details: [
+      {
+        place: 'USA',
+        date: ISODate('2010-07-16T00:00:00.000Z'),
+        rating: 8.8
+      },
+      {
+        place: 'UK',
+        date: ISODate('2010-07-22T00:00:00.000Z'),
+        rating: 8.7
+      }
+    ]
+  }
+]
