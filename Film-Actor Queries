@@ -167,8 +167,9 @@ Movie> db.Actor.deleteOne({fname:"Salman"})
 
 
 Q.6
-TO do
-
+ db.Actor.deleteMany(
+...   { age: { $gt: 45 } }
+... )
 
 Q.7
   {
@@ -273,3 +274,161 @@ Movie> db.Film.find({film_id:"f001"})
     ]
   }
 ]
+
+Q.10
+db.Actor.updateOne(
+...   { fname: "Amitabh", lname: "Bachaan" },
+...   {
+...     $set: {
+...       "contact.phone": "+91-9999999999"
+...     }
+...   }
+... )
+
+Q.11
+db.Film.updateMany(
+...   { genre: "comedy" },
+...   {
+...     $pull: { genre: "comedy" }
+...   }
+... )
+
+Q.12
+db.Actor.updateMany(
+...   { "address.country": "India" },
+...   {
+...     $inc: { age: 2 }
+...   }
+... )
+
+Q.13
+ db.Film.updateMany(
+...   {},
+...   {
+...     $rename: { "film_id": "movie_id" }
+...   }
+... )
+
+Q.14
+ db.Film.updateOne(
+...   { title: "RRR" },
+...   {
+...     $push: {
+...       actors: {
+...         fname: "Alia",
+...         lname: "Bhatt"
+...       }
+...     }
+...   }
+... )
+
+Q.15
+ db.Film.insertOne({
+...   film_id: "f009",
+...   title: "KGF",
+...   year: 2018,
+...   genre: ["action", "drama"],
+...   actors: [
+...     { fname: "Yash", lname: "" },
+...     { fname: "Srinidhi", lname: "Shetty" }
+...   ],
+...   director: { fname: "Prashanth", lname: "Neel" },
+...   release_details: [
+...     {
+...       place: "India",
+...       date: new Date("2018-12-21"),
+...       rating: 8.5
+...     },
+...     {
+...       place: "Dubai",
+...       date: new Date("2018-12-25"),
+...       rating: 8.4
+...     }
+...   ]
+... })
+
+db.Film.updateOne(
+...   { title: "KGF" },
+...   {
+...     $pull: {
+...       release_details: { place: "Dubai" }
+...     }
+...   }
+... )
+
+Q.16
+ db.Film.updateOne(
+...   { title: "Lagaan" },
+...   {
+...     $push: {
+...       genre: { $each: ["drama", "historical"] }
+...     }
+...   }
+... )
+
+Q.17
+ db.Actor.insertOne({
+...   actor_id: 7,
+...   fname: "Tom",
+...   lname: "Cruise",
+...   address: {
+...     street: "Hollywood Blvd",
+...     city: "Los Angeles",
+...     state: "California",
+...     country: "USA",
+...     pincode: "90028"
+...   },
+...   contact: {
+...     email: "tom.cruise@film.com",
+...     phone: "+1-555-9876543"
+...   },
+...   age: 61
+... })
+
+ db.Actor.updateOne(
+...   { fname: "Tom", lname: "Cruise" },
+...   {
+...     $inc: { age: 1 },
+...     $set: { "contact.email": "tom.cruise@film.com" }
+...   }
+... )
+
+Q.18
+ db.Film.deleteMany(
+...   { year: { $lt: 2000 } }
+... )
+
+Q.19
+ db.Actor.insertOne({
+...   actor_id: 8,
+...   fname: "Shah Rukh",
+...   lname: "Khan",
+...   address: {
+...     street: "Mannat",
+...     city: "Mumbai",
+...     state: "MH",
+...     country: "India",
+...     pincode: "400051"
+...   },
+...   contact: {
+...     email: "srk@film.com",
+...     phone: "+91-9998887777"
+...   },
+...   age: 59,
+...   awards_won: 5
+... })
+
+ db.Actor.updateOne(
+...   { fname: "Sharukh", lname: "Khan" },
+...   {
+...     $set: { awards_won: 5 }
+...   }
+... )
+
+Q.20
+ db.Film.updateOne(
+...   { title: "Gladiator" },
+...   {
+...     $set: { "director.lname": "Scott" }
+...   }
+... )
