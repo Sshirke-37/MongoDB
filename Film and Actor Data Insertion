@@ -6,6 +6,9 @@ db.Film.insertOne({film_id:"f005",title:"Avatar",year:2009,genre:["sci-fi","adve
 db.Film.insertOne({film_id:"f006",title:"Maya",year:2022,genre:["thriller","mystery"],actors:[{fname:"Amit",lname:"Sadh"}],director:{fname:"Ashwin",lname:"Saravanan"},release_details:[{place:"India",date:new Date("2022-08-10"),rating:7.2}]})
 db.Film.insertOne({film_id:"f007",title:"Endgame",year:2019,genre:["action","superhero"],actors:[{fname:"Robert",lname:"Downey Jr."}],director:{fname:"Anthony",lname:"Russo"},release_details:[{place:"India",date:new Date("2019-04-26"),rating:8.6}]})
 db.Film.insertOne({film_id:"f008",title:"Lagaan",year:2001,genre:["sports","action"],actors:[{fname:"Amir",lname:"Khan"}],director:{fname:"Ashutosh",lname:"Gowariker"},release_details:[{place:"India",date:new Date("2001-06-15"),rating:8.1}]})
+db.Film.insertOne({film_id: "f009",title: "Rebound",year: 2009,genre: ["comedy", "sports"],actors: [{ fname: "Martin", lname: "Lawrence" }],director: { fname: "Steve", lname: "Carr" },release_details: [{ place: "USA", date: new Date("2009-06-10"), rating: 6.0 }]})
+
+
 db.Actor.insertOne({actor_id:1,fname:"Leonard",lname:"Dicaprico",address:{street:"Sunset Bld",city:"Los-Angeles",state:"California",country:"USA",pincode:"90001"},contact:{email:"leo@film.com",phone:"+1-555-1234567"},age:49})
 db.Actor.insertOne({actor_id:2,fname:"Dhanush",lname:"",address:{street:"Kodambakkam",city:"Chennai",state:"TN",country:"India",pincode:"600024"},contact:{email:"dhanush@film.com",phone:"+91-7058092375"},age:41})
 db.Actor.insertOne({actor_id:3,fname:"Alia",lname:"Bhatt",address:{street:"Juhu",city:"Mumbai",state:"MH",country:"India",pincode:"400049"},contact:{email:"alia@film.com",phone:"+91-7058092371"},age:30})
