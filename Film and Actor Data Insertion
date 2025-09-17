@@ -10,24 +10,9 @@ db.Film.insertOne({film_id: "f009",title: "Rebound",year: 2009,genre: ["comedy",
 db.Film.insertOne({film_id: "f010",title: "The Lost Signal",year: 2023,genre: ["adventure", "thriller"],actors: [{ fname: "Nina", lname: "Dobrev" }],director: { fname: "Jordan", lname: "Peele" },release_details: [{ place: "India", date: new Date("2023-07-10"), rating: 7.9 }]})
 db.Film.insertOne({film_id: "f011",title: "Echoes of Silence",year: 2021,genre: ["drama", "thriller"],actors: [{ fname: "Radhika", lname: "Apte" }],director: { fname: "Neeraj", lname: "Ghaywan" },release_details: [{ place: "India", date: new Date("2021-09-10"), rating: "A" }]})
 db.Film.insertOne({film_id: "f012",title: "Life in Laughter",year: 2012,genre: ["comedy", "family"],actors: [{ fname: "Jim", lname: "Carrey" }],director: { fname: "Todd", lname: "Phillips" },release_details: [{ place: "USA", date: new Date("2012-05-18"), rating: 7.5 }]})
-db.Film.insertMany([{film_id: "f013",title: "Animal",year: 2023,genre: ["action", "drama"],actors: [{ fname: "Ranbir", lname: "Kapoor" }],director: { fname: "Sandeep", lname: "Reddy Vanga" },release_details: [{ place: "India", date: new Date("2023-12-01"), rating: 8.3 }]},{film_id: "f014",title: "Brahmastra",
-    year: 2022,
-    genre: ["fantasy", "action"],
-    actors: [{ fname: "Ranbir", lname: "Kapoor" }],
-    director: { fname: "Ayan", lname: "Mukerji" },
-    release_details: [{ place: "India", date: new Date("2022-09-09"), rating: 7.1 }]
-  },
-  {
-    film_id: "f015",
-    title: "Sanju",
-    year: 2018,
-    genre: ["biography", "drama"],
-    actors: [{ fname: "Ranbir", lname: "Kapoor" }],
-    director: { fname: "Rajkumar", lname: "Hirani" },
-    release_details: [{ place: "India", date: new Date("2018-06-29"), rating: 8.0 }]
-  }
-])
+db.Film.insertMany([{film_id: "f013",title: "Animal",year: 2023,genre: ["action", "drama"],actors: [{ fname: "Ranbir", lname: "Kapoor" }],director: { fname: "Sandeep", lname: "Reddy Vanga" },release_details: [{ place: "India", date: new Date("2023-12-01"), rating: 8.3 }]},{film_id: "f014",title: "Brahmastra",year: 2022,genre: ["fantasy", "action"],actors: [{ fname: "Ranbir", lname: "Kapoor" }],director: { fname: "Ayan", lname: "Mukerji" },release_details: [{ place: "India", date: new Date("2022-09-09"), rating: 7.1 }]},{film_id: "f015",title: "Sanju",year: 2018,genre: ["biography", "drama"],actors: [{ fname: "Ranbir", lname: "Kapoor" }],director: { fname: "Rajkumar", lname: "Hirani" },release_details: [{ place: "India", date: new Date("2018-06-29"), rating: 8.0 }]}])
 db.Film.insertOne({film_id: "f016",title: "Dilwale",year: 2015,genre: ["romance", "action"],actors: [{ fname: "Shah Rukh", lname: "Khan" },{ fname: "Kajol", lname: "" }],director: { fname: "Rohit", lname: "Shetty" },release_details: [{ place: "India", date: new Date("2015-12-18"), rating: 6.0 }]})
+
 
 db.Actor.insertOne({actor_id:1,fname:"Leonard",lname:"Dicaprico",address:{street:"Sunset Bld",city:"Los-Angeles",state:"California",country:"USA",pincode:"90001"},contact:{email:"leo@film.com",phone:"+1-555-1234567"},age:49})
 db.Actor.insertOne({actor_id:2,fname:"Dhanush",lname:"",address:{street:"Kodambakkam",city:"Chennai",state:"TN",country:"India",pincode:"600024"},contact:{email:"dhanush@film.com",phone:"+91-7058092375"},age:41})
