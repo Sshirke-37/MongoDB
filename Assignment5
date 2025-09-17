@@ -1,0 +1,11 @@
+Q1. db.Film.find({title:/^R/,year:{$in: [2009,2011]}})
+Q2. db.Film.find({actors: {$elemMatch: {fname: "Aamir",lname: "Khan"}}})
+Q3. db.Film.find({year: { $gte: 1990, $lte: 1999 }},{ title: 1, year: 1, _id: 0 })
+Q4. db.Film.find({genre: { $all: ["adventure", "thriller"] }},{ title: 1, genre: 1, _id: 0 })
+Q5. db.Film.find({release_details: {$elemMatch: { rating: "A" }}},{ title: 1, release_details: 1, _id: 0 })
+Q6. db.Film.find({}, { title: 1, year: 1, _id: 0 }).sort({ year: -1, title: 1 })
+Q7. db.Actor.find({}, { fname: 1, lname: 1, age: 1, _id: 0 }).sort({ age: 1 })
+Q8. db.Film.find({genre: { $in: ["comedy", "drama"] },year: { $gt: 2005 }},{ title: 1, genre: 1, year: 1, _id: 0 })
+Q9. db.Film.find({ "actors.fname": "Ranbir", "actors.lname": "Kapoor" },{ title: 1, year: 1, _id: 0 }).sort({ year: -1 }).limit(2)
+Q10. db.Film.find({actors: {$all: [{ $elemMatch: { fname: "Shah Rukh", lname: "Khan" } },{ $elemMatch: { fname: "Kajol", lname: "" }}]}},{ title: 1, _id: 0 })
+Q11. 
