@@ -9,3 +9,12 @@ Q8. db.Film.find({genre: { $in: ["comedy", "drama"] },year: { $gt: 2005 }},{ tit
 Q9. db.Film.find({ "actors.fname": "Ranbir", "actors.lname": "Kapoor" },{ title: 1, year: 1, _id: 0 }).sort({ year: -1 }).limit(2)
 Q10. db.Film.find({actors: {$all: [{ $elemMatch: { fname: "Shah Rukh", lname: "Khan" } },{ $elemMatch: { fname: "Kajol", lname: "" }}]}},{ title: 1, _id: 0 })
 Q11. 
+Q12. db.Film.aggregate([{$lookup: {from: "Actor",localField: "actors.fname",foreignField: "fname",as: "actor_info"}}])
+Q13. db.Film.find({"director.fname": "Christopher","director.lname": "Nolan",year: { $gt: 2010 }})
+Q14. db.Film.find({$expr: { $gt: [ { $size: "$release_details" }, 2 ] }})
+Q15. 
+Q16. db.Film.find({ release_details: { $elemMatch: { rating: { $gt: 8.5 } } } },{ _id: 0, title: 1, genre: 1 })
+Q17. db.Film.find({"release_details.place": { $all: ["India", "USA"] }})
+Q18. db.Actor.find({ fname: /^A/ })
+Q19. db.Film.find({"actors.fname": {$in: ["Kate", "Alia", "Radhika", "Nina", "Anne", "Emma", "Isabel", "Lucia", "Zhang"]}})
+Q20. db.Film.find({ genre: { $ne: "horror" } },{ _id: 0, title: 1, genre: 1 })
